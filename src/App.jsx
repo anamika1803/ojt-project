@@ -4,7 +4,6 @@ import { Home } from "./Pages/Home";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Dashboard from "./Pages/Dashboard";
-import Notice from "./Pages/Notice";
 import Login from "./Pages/Login";
 import "./App.css"
 import Register from "./Pages/Register";
@@ -38,7 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Dashboard/*" element={<Dashboard />} />
-          <Route path="/Notice" element={<Notice />} />
+         
           <Route path="/login" element={<Login />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />

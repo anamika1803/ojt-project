@@ -1,22 +1,22 @@
 import React from "react";
-// import Searchbar from "./Searchbar";
+import mindset from "../assets/mindset.jpeg"
+import { Link } from "react-router-dom";
 
-import { Dropdown } from 'flowbite-react';
-function Navbar() {
 
+
+function Navbar({username , userEmail}) {
   return (
-
-    <nav class=" bg-white border-[#3D3B3C] dark:bg-gray-900 ">
-
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+    <nav className="bg-white border-[#3D3B3C] dark:bg-gray-900">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
         <header className="flex justify-between items-center py-0.2px-1">
-          <img src="../src/assets/9.jpg " class="h-12 " />
-          <div class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ml-0">
-            Campus Academy
+          <img src={mindset} className="h-12" />
+          <div className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ml-0 font-serif">
+            Mindset Academy
           </div>
         </header>
-        {/* </a> */}
-        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
+        <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          {/* ... (previous code) */}
           <button
             type="button"
             class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -28,58 +28,38 @@ function Navbar() {
             <span class="sr-only">Open user menu</span>
             <img
               class="w-8 h-8 rounded-full"
-              src="/docs/images/people/profile-picture-3.jpg"
+              src="../assets/user.png"
               alt="user photo"
             />
           </button>
-          {/* <!-- Dropdown menu --> */}
+          {/* Dropdown menu */}
           <div
-            class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+            className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
             id="user-dropdown"
           >
-            <div class="px-4 py-3">
-              <span class="block text-sm text-gray-900 dark:text-white">
-                Bonnie Green
-              </span>
-              <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">
-                name@flowbite.com
-              </span>
+            <div className="px-4 py-3">
+              <div className="px-4 py-3">
+                <span className="block text-sm text-gray-900 dark:text-white">
+                  {username || "Guest"}
+                </span>
+                <span className="block text-sm text-gray-500 truncate dark:text-gray-400">
+                  {userEmail}
+                </span>
+              </div>
             </div>
-            <ul class="py-2" aria-labelledby="user-menu-button">
+            <ul className="py-2" aria-labelledby="user-menu-button">
+              {/* ... (previous code) */}
               <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                <Link
+                  to="/login" // Update this path to match your login route
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Settings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Earnings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Sign out
-                </a>
+                  Logout
+                </Link>
               </li>
             </ul>
           </div>
+
           <button
             data-collapse-toggle="navbar-user"
             type="button"
@@ -104,25 +84,28 @@ function Navbar() {
               />
             </svg>
           </button>
+
+          {/* ... (remaining code) */}
         </div>
+
         <div
-          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-user"
         >
+          {" "}
           <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100  bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <a
                 href="/"
-                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 font-serif"
                 aria-current="page"
-              >
-                Home
+              >Home
               </a>
             </li>
             <li>
               <a
                 href="About"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
               >
                 About
               </a>
@@ -130,31 +113,16 @@ function Navbar() {
             <li>
               <a
                 href="Courses"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
               >
-                <Dropdown label="Courses" inline>
-                  <Dropdown.Item>BCA</Dropdown.Item>
-                  <Dropdown.Item>Engineering</Dropdown.Item>
-                  <Dropdown.Item>Fashion Desiging</Dropdown.Item>
-                  <Dropdown.Item>B.Com</Dropdown.Item>
-                  <Dropdown.Item>BMC</Dropdown.Item>
-                  <Dropdown.Item>Hotel Management</Dropdown.Item>
-                  <Dropdown.Item>AMM</Dropdown.Item>
-                </Dropdown>
+               Course
               </a>
             </li>
-            <li>
-              <a
-                href="Notice"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Notice
-              </a>
-            </li>
+           
             <li>
               <a
                 href="Contact"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
               >
                 Contact
               </a>
@@ -162,25 +130,23 @@ function Navbar() {
             <li>
               <a
                 href="Dashboard"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
               >
                 Dashboard
               </a>
-
             </li>
-            <li>
-              <li>
-                <label class="switch">
-                  <input type="checkbox" />
-                  <span class="slider"></span>
-                </label>
-              </li>
-            </li>
+          
           </ul>
+          {/* ... (previous code) */}
         </div>
-      </div>
-
+      </div >
+      <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-[180vh] top-0">
+      <Link to='/login'>
+                  LOGIN
+                  </Link>
+      </button>
     </nav>
   );
 }
+
 export default Navbar;

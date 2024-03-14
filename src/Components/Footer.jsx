@@ -1,4 +1,5 @@
 import React from 'react'
+import mindset from "../assets/mindset.jpeg"
 
 export default function Footer() {
   return (
@@ -8,9 +9,9 @@ export default function Footer() {
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-              <a href="/home" class="flex items-center">
-                  <img src="../src/assets/9.jpg" class="h-12 me-3" alt="Campus Academy" />
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Campus Academy</span>
+              <a href="/home" class="flex items-center ">
+                  <img className=' h-10 w-10' src={mindset} alt="Campus Academy" />
+                  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Mindset Academy</span>
               </a>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -29,13 +30,14 @@ export default function Footer() {
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
+                          <a href="https://github.com" class="hover:text-black hover:underline ">Github</a>
                       </li>
                       <li>
                           <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
                       </li>
                   </ul>
               </div>
+             
               <div>
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
@@ -47,8 +49,11 @@ export default function Footer() {
                       </li>
                   </ul>
               </div>
+             
           </div>
       </div>
+      <br/>
+    
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div class="sm:flex sm:items-center sm:justify-between">
           <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
@@ -84,9 +89,13 @@ export default function Footer() {
                 </svg>
                   <span class="sr-only">Dribbble account</span>
               </a>
+              
+     
           </div>
       </div>
     </div>
+   <div><Date/></div>
+
 </footer>
 
   )

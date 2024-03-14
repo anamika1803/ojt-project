@@ -1,17 +1,9 @@
 import React from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import EmailIcon from "@mui/icons-material/Email";
-import PinDropIcon from "@mui/icons-material/PinDrop";
-import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+
 import send from "../assets/send.png"
 const containerStyle = {
   width: "100%",
   height: "500px",
-};
-
-const center = {
-  lat: 25.612025149154025,  // Update with your desired latitude
-  lng: 85.12618565215442, // Update with your desired longitude
 };
 
 export const Contact = () => {
@@ -30,11 +22,7 @@ export const Contact = () => {
       <div className="flex justify-center items-center h-screen">
         <div className="grid grid-cols-3 gap-20">
           <div className="bg-gray-200 shadow-lg w-72 h-40 font-bold text-3xl flex flex-col justify-center items-center">
-            {" "}
-            <PinDropIcon
-              sx={{ fontSize: 60, color: "red" }}
-              className="mb-2"
-            />{" "}
+            
             <p className="font-semibold text-3xl text-center">Address</p>{" "}
             <p className="font-semibold text-lg text-center">
               patna womens college, bailey road, Patna, 800001
@@ -42,10 +30,7 @@ export const Contact = () => {
           </div>
           <div className="bg-gray-200 shadow-lg w-72 h-40 font-bold text-3xl flex flex-col justify-center items-center">
             {" "}
-            <EmailIcon
-              sx={{ fontSize: 60, color: "#EAC435" }}
-              className="mb-2"
-            />
+            
             <p className="font-semibold text-3xl text-center">Email Address</p>{" "}
             <p className="font-semibold text-lg text-center">
               patnawomenscollege@gmail.com
@@ -53,10 +38,7 @@ export const Contact = () => {
           </div>
           <div className="bg-gray-200 shadow-lg w-72 h-40 font-bold text-3xl flex flex-col justify-center items-center">
             {" "}
-            <PhoneAndroidIcon
-              sx={{ fontSize: 60, color: "green" }}
-              className="mb-2"
-            />
+            
             <p className="font-semibold text-3xl text-center">Phone No.</p>{" "}
             <p className="font-semibold text-lg text-center">
               +91 8376773634
@@ -68,17 +50,7 @@ export const Contact = () => {
       
       <div className="relative">
       <div className="flex justify-between mt-2 mb-20">
-      <div className="mt-8 w-[100vh]  ml-5">
-        <LoadScript googleMapsApiKey="AIzaSyAUXTgSxvAUvVniLjF1A2oiy60NAFXA69Q">
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={15}
-          >
-            <Marker position={center} />
-          </GoogleMap>
-        </LoadScript>
-      </div>
+
 
       <div className=' max-w-md w-full mx-auto p-6 bg-gray-800 rounded-lg shadow-md'>
 <h2 className='text-3xl text-center text-pink-600 font-bold mb-6'>Contact Us</h2>
