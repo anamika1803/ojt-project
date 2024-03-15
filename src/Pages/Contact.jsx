@@ -8,50 +8,7 @@ const containerStyle = {
 
 export const Contact = () => {
   return (
-    <div className="relative">
-      <div className="relative mb-35">
-        <div className="absolute inset-0 bg-gray-800 bg-opacity-50 blur-md"></div>
-        <img src="./src/assets/students.jpg" className="h-[100vh] w-[210vh] ms-2" />
-      </div>
-
-      <div className="absolute inset-0 flex justify-center items-center mb-80">
-        <div className=" absolute top-1/4 left-0 right-0 text-white text-8xl font-bold text-center ">
-          Contact Us
-        </div>
-      </div>
-      <div className="flex justify-center items-center h-screen">
-        <div className="grid grid-cols-3 gap-20">
-          <div className="bg-gray-200 shadow-lg w-72 h-40 font-bold text-3xl flex flex-col justify-center items-center">
-            
-            <p className="font-semibold text-3xl text-center">Address</p>{" "}
-            <p className="font-semibold text-lg text-center">
-              patna womens college, bailey road, Patna, 800001
-            </p>{" "}
-          </div>
-          <div className="bg-gray-200 shadow-lg w-72 h-40 font-bold text-3xl flex flex-col justify-center items-center">
-            {" "}
-            
-            <p className="font-semibold text-3xl text-center">Email Address</p>{" "}
-            <p className="font-semibold text-lg text-center">
-              patnawomenscollege@gmail.com
-            </p>{" "}
-          </div>
-          <div className="bg-gray-200 shadow-lg w-72 h-40 font-bold text-3xl flex flex-col justify-center items-center">
-            {" "}
-            
-            <p className="font-semibold text-3xl text-center">Phone No.</p>{" "}
-            <p className="font-semibold text-lg text-center">
-              +91 8376773634
-            </p>{" "}
-            {/* Adjust font size here */}
-          </div>
-        </div>
-      </div>
-      
-      <div className="relative">
-      <div className="flex justify-between ">
-
-
+   <div>
       <div className=' max-w-md w-full mx-auto p-6 bg-gray-800 rounded-lg shadow-md'>
 <h2 className='text-3xl text-center text-pink-600 font-bold mb-6'>Contact Us</h2>
 <form action=''>
@@ -87,10 +44,29 @@ export const Contact = () => {
             referrerPolicy='no-referrer-when-downgrade'
           ></iframe>
         </div>
+        
+
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
    </div>
       </div>
-      </div>
-    </div>
+     
   );
 };
 
