@@ -49,7 +49,7 @@ export const Contact = () => {
       </div>
       
       <div className="relative">
-      <div className="flex justify-between mt-2 mb-20">
+      <div className="flex justify-between ">
 
 
       <div className=' max-w-md w-full mx-auto p-6 bg-gray-800 rounded-lg shadow-md'>
@@ -75,8 +75,19 @@ export const Contact = () => {
     </div>
     </form>
     </div>
-
-   
+    <div>
+    <address className=' h-[20vh] w-[20vh] mb-10 mt-[50vh] mr-[50vh]'>Patna Womens College</address>
+        <div className=' overflow h-0 py-20 relative'>
+          <iframe className=' border  left-0 top-0 absolute col-span-5 '
+            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.788658876585!2d85.12358927419201!3d25.61193807744627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x140d7ef4cbe1e381%3A0x775ba2c14e2ee345!2sPatna%20Women%E2%80%99s%20College!5e0!3m2!1sen!2sin!4v1710494133082!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade'
+            width='600'
+            height='450'
+            allowFullScreen=''
+            loading='lazy'
+            referrerPolicy='no-referrer-when-downgrade'
+          ></iframe>
+        </div>
+   </div>
       </div>
       </div>
     </div>

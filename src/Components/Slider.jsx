@@ -28,8 +28,8 @@ export default function Slider() {
                 <img className=' max-h-[90vh]' src={complete} />
             </div>
         </Carousel>
-        <div className="h-50vh flex items-center  bg-gray-300 shadow-lg w-full justify-center mt-4 text-3xl font-display">
-          <h1 className="text-center font-serif">
+        <div className="h-50vh flex items-center shadow-slate-400 bg-gray-200  shadow-lg w-full justify-center mt-4 text-3xl font-display">
+          <h1 className="text-center font-serif italic">
             “Courage doesn’t always roar. Sometimes courage is the quiet voice at the end of the day saying ‘I will try again tomorrow’.”
           </h1>
         </div>
