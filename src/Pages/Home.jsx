@@ -45,7 +45,7 @@ export const Home = () => {
        <br/>
        <br/>
        <br/>
-        <div className=" ml-7">
+        {/* <div className=" ml-7">
         <Link to='/About' className=" relative px-5 py-2 font-medium text-white group ml-[80vh]">
 <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-purple-500 group-hover:bg-purple-700 group-hover:skew-x-12 "></span>
 <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-purple-700 group-hover:bg-purple-500 group-hover:-skew-x-12"></span>
@@ -53,7 +53,12 @@ export const Home = () => {
 <span className="absolute bottom-0 right-0 hidden w-10 h-20 transition-all duration-100 ease-out transform translate-x-10 translate-y-8 bg-purple-400 -rotate-12"></span>
 <span className="relative">About Us</span>
 </Link>
-        </div>
+        </div> */}
+        <div></div>
+        <footer className="mt-auto bg-gray-200 dark:bg-gray-900 py-4 text-center">
+        {/* Footer content */}
+        © 2024 Your Company. All rights reserved.
+      </footer>
       </div>
   );
 };

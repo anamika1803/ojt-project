@@ -69,7 +69,6 @@ export default function Register() {
       })
       .then(data => {
         alert(data.message);
-
       })
       .catch(error => {
         console.error(error);
@@ -78,84 +77,90 @@ export default function Register() {
   }
 
   return (
-    <>
-      <div >
-        <div>
-          <div className=' mt-[5vh]  size-[60vh] ml-[90vh] mb-[90vh]' >
-            <div className="bg-black border border-slate-300  bg-slate-500 rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative mt-[5vh] mb-[40vh]">
-              <h1 className="text-4xl text-white font-bold text-center mb-4">Register</h1>
-              <form onSubmit={handleRegister} action="">
-                <div className="relative my-4">
-                  <label htmlFor="name" className="absolute text-sm text-orange-600 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:translate-y-6 font-semibold"> Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    className='block w-60 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2  border-green-500 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:text-gray-600 focus:border-blue-300 peer font-semibold'
-                    placeholder=""
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                </div><br></br>
-                <div className="relative my-2">
-                  <label htmlFor="phoneno" className="absolute text-sm text-orange-600 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:translate-y-6 font-semibold"> PhoneNo</label>
-                  <input
-                    type="text"
-                    id="phoneno"
-                    className='block w-60 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-green-500 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:text-gray-600 focus:border-blue-300 peer'
-                    placeholder=""
-                    value={phoneno}
-                    onChange={(e) => setPhoneNo(e.target.value)}
-                    required
-                  />
-                </div><br></br>
-                <div className="relative my-2">
-                  <label htmlFor="email" className="absolute text-sm text-orange-600 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:translate-y-6 font-semibold"> Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className='block w-60 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-green-500 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:text-gray-600 focus:border-blue-300 peer'
-                    placeholder=""
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div><br></br>
-                <div className="relative my-2">
-                  <label htmlFor="password" className="absolute text-sm text-orange-600 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-500 peer-focus:dark:text-blue-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:translate-y-6 font-semibold"> Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    className='block w-60 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-green-500 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:text-gray-600 focus:border-blue-500 peer'
-                    placeholder=""
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </div><br></br>
-                <div className="relative my-2">
-                  <label htmlFor="confirmPassword" className="absolute text-sm text-orange-600 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:translate-y-6 font-semibold"> Confirm Password</label>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    className='block w-60 py-2.5 px-0 text-xl text-white bg-transparent border-0 border-b-2 border-green-500 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:text-gray-600 focus:border-blue-300 peer'
-                    placeholder=""
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                  />
-                </div><br></br>
-
-                {error && <div className="text-red-500">{error}</div>}
-                <button className="w-full mb-4 text-[18px] mt-6 rounded-full bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white py-2 transition-colors duration-300 " type="submit">Register</button>
-                <div><br></br>
-                  <span className="m-4">Already Create an Account?<Link className="text-blue-500" to='/Login'>Login</Link></span>
-                </div>
-              </form>
-            </div>
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="max-w-md w-full p-6 bg-white shadow-md rounded-md">
+        <h1 className="text-3xl text-center font-bold mb-6">Register</h1>
+        <form onSubmit={handleRegister}>
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-sm font-semibold mb-2">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
           </div>
+          <div className="mb-4">
+            <label htmlFor="phoneno" className="block text-sm font-semibold mb-2">
+              Phone Number
+            </label>
+            <input
+              type="text"
+              id="phoneno"
+              value={phoneno}
+              onChange={(e) => setPhoneNo(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-semibold mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-semibold mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="confirmPassword" className="block text-sm font-semibold mb-2">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+          {error && <div className="text-red-500 mb-4">{error}</div>}
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+          >
+            Register
+          </button>
+        </form>
+        <div className="mt-4 text-center">
+          <span>Already have an account? </span>
+          <Link to="/login" className="text-blue-500">
+            Login
+          </Link>
         </div>
       </div>
-      </>
-);
+    </div>
+  );
 }

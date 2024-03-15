@@ -1,147 +1,121 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function Login () {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const navigation = useNavigate()
+// Import your image
+import loginImage from '../assets/login.jpg';
 
-  function handleLogin (e) {
-    e.preventDefault()
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigation = useNavigate();
+
+  function handleLogin(e) {
+    e.preventDefault();
 
     // Basic email validation
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      setError('Please enter a valid email address')
-      return
+      setError('Please enter a valid email address');
+      return;
     }
 
     // Basic password validation (minimum length)
     if (!password || password.length < 6) {
-      setError('Password must be at least 6 characters')
-      return
+      setError('Password must be at least 6 characters');
+      return;
     }
 
     // Clear previous errors
-    setError('')
+    setError('');
 
-    const body = {
+    const loginBody = {
       email,
-      password
-    }
+      password,
+    };
 
-    fetch('http://localhost:3000/login', {
+    const endpoint = `http://localhost:3000/login`;
+
+    fetch(endpoint, {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(loginBody),
     })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
+      .then(response => response.json())
+      .then(data => {
+        console.log('API response:', data);
+        // Check if the response contains the token and user role
+        if (data.token && data.eUser && data.eUser.role) {
+          // Store the token and user role in localStorage
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('userRole', data.eUser.role);
+          navigation('/dashboard'); // Redirect to the dashboard after successful login
         } else {
-          throw new Error(`Login failed with status ${response.status}`)
+          console.error('Invalid response from login API');
         }
       })
-      .then(res => {
-        localStorage.setItem('userToken', res.token)
-        console.log(res)
-        alert('Login success')
-        navigation('/dashboard')
-        // Use your navigation method here to redirect to the dashboard
-        // For example, if you are using react-router, you might do:
-        // history.push("/dashboard");
-      })
       .catch(error => {
-        console.error(error)
-        alert(`Login failed.\nError: ${error.message}`)
-      })
+        console.error('Error:', error);
+      });
   }
 
   return (
-    <>
-      <div className=' mt-[5vh]  size-[60vh] ml-[90vh] mb-[90vh]'>
-        <div>
-        
-        
-          <div className=' border-style:solid bg-slate-500 border border-slate-500 rounded-md p-7 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative font-semibold '>
-            <h1 className=' text-4xl  text-white font-bold text-center mb-4'>
-              Login
-            </h1>
-            <form onSubmit={handleLogin} action=''>
-              <div className=' relative my-4'>
-                <label
-                  htmlFor='email'
-                  className='absolute text-sm text-orange-600 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:translate-y-6 font-semibold'
-                >
-                  {' '}
-                  Email
-                </label>
-                <input
-                  type='email'
-                  id='email'
-                  className='block w-72 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-green-500 appearance-none dark:focus: border-blue-500 focus:outline-none  focus:ring-0 focus:text-gray-600 focus:border-blue-300 peer font-semibold'
-                  placeholder=''
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <br></br>
-              <div className=' relative my-4'>
-                <label
-                  htmlFor='password'
-                  className='absolute text-sm text-orange-600 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:translate-y-6'
-                >
-                  {' '}
-                  Password
-                </label>
-                <input
-                  type='password'
-                  id='password'
-                  className='block w-72 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-green-500 appearance-none dark:focus: border-blue-500 focus:outline-none focus:ring-0 focus:text-gray-600 focus:border-blue-300 peer'
-                  placeholder=''
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  minLength={6}
-                  required
-                />
-              </div>
-              <br></br>
-              {error && <div className='text-red-500'>{error}</div>}
-              <div className='flex justify-between items-center'>
-                <div className=' flex gap-3 items-center'>
-                  <input type='checkbox' name='' id='' />
-                  <label htmlFor='Remember Me'> &nbsp;&nbsp;Remember Me</label>
-                </div>
-                <br></br>
-                <div>
-                  <Link to='' className=' text-blue-500 flex-row'>
-                    Forgot Password?
-                  </Link>
-                </div>
-              </div>
-              <br></br>
-              <button
-                className='w-full mb-4 text-[18px] mt-6 rounded-full bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white py-2 transition-colors duration-300'
-                type='submit'
-              >
-                Login
-              </button>
-              <div>
-                <br></br>
-                <span className='m-4'>
-                  New Here?{' '}
-                  <Link className='text-blue-500' to='/Register'>
-                    Create an Account
-                  </Link>
-                </span>
-              </div>
-            </form>
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      {/* Image on the left */}
+      <div className="flex justify-center items-center h-full w-1/2">
+        <img src={loginImage} alt="Login" className="h-198 max-w-full" />
+      </div>
+      
+      {/* Login form on the right shadow-md */}
+      <div className="max-w-md w-1/2 p-6 rounded-md  ml-4">    
+        <h1 className="text-3xl text-center font-bold mb-6">Login</h1>
+        <form onSubmit={handleLogin}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-semibold mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-3 py-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
           </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-semibold mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              minLength={6}
+              required
+            />
+          </div>
+          {error && <div className="text-red-500 mb-4">{error}</div>}
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+          >
+            Login
+          </button>
+        </form>
+        <div className="mt-4 text-center">
+          <span>New Here? </span>
+          <Link to="/register" className="text-blue-500">
+            Create an Account
+          </Link>
         </div>
       </div>
-    </>
-  )
+     <div></div>
+    </div>
+  );
+  
+
 }
