@@ -5,10 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 const EditUserForm = ({ formData, onClose, notify }) => {
   const [updatedFormData, setUpdatedFormData] = useState({ ...formData });
 
-  
   // Function to handle form submission
   const handleSubmit = (e) => {
-    debugger
     e.preventDefault();
     // Convert phoneNumber to string
     const updatedPhoneNumber = String(updatedFormData.PhoneNo);
@@ -34,7 +32,6 @@ const EditUserForm = ({ formData, onClose, notify }) => {
     .catch(error => console.error('Error updating student:', error));
   };
   
-
   // Function to handle input changes in the form
   const handleInputChange = (e) => {
     setUpdatedFormData({
@@ -46,8 +43,10 @@ const EditUserForm = ({ formData, onClose, notify }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <button className="absolute top-4 right-4 text-gray-500" onClick={onClose}>Close</button>
-        <h2 className="text-2xl font-semibold mb-4">Edit Student</h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-semibold">Edit Student</h2>
+          <button className="text-gray-500" onClick={onClose}>Close</button>
+        </div>
         <form onSubmit={handleSubmit}>
           {/* Render form fields with updatedFormData */}
           <input
@@ -82,9 +81,12 @@ const EditUserForm = ({ formData, onClose, notify }) => {
             onChange={handleInputChange}
             className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 block w-full"
           />
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">
-            Update Student
-          </button>
+          <div className="flex justify-end">
+            
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">
+              Update Student
+            </button>
+          </div>
         </form>
       </div>
     </div>

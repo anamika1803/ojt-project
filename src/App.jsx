@@ -11,7 +11,7 @@ import Contact from "./Pages/Contact";
 import Courses from "./Pages/Courses";
 import About from "./Pages/About";
 
-// import User from "./Pages/User";
+
 
 
 function App() {
@@ -35,16 +35,17 @@ function App() {
         {showNavbar && <Navbar />}
        
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Dashboard/*" element={<Dashboard />} />
+          <Route path="/home" element={<Home />} />
          
-          <Route path="/login" element={<Login />} />
+         
+          <Route path="/" element={<Login />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Courses" element={<Courses/>} />
           <Route path="/About" element={<About/>} />
           <Route path='/dashboard' element={<Dashboard/>}/>
-          {/* <Route path="/User" element={<User />} /> */}
+          
+          
         </Routes>
       </div>
       <Footer />

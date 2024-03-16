@@ -75,7 +75,7 @@ const DashboardPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="mt-8 px-4 flex-grow">
         <div className="relative overflow-x-auto">
           {/* Add New User Button */}
