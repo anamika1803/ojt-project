@@ -3,10 +3,12 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from '../Components/Navbar';
 import EditProductForm from '../Components/EditUserForm'; // Import the EditProductForm component
+import AddUserForm from '../Components/AddUserPage'; // Import the AddUserForm component
 
 const DashboardPage = () => {
   const [studentData, setStudentData] = useState([]);
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isAddFormOpen, setIsAddFormOpen] = useState(false); // State for Add User form
+  const [isEditFormOpen, setIsEditFormOpen] = useState(false); // State for Edit form
   const [editFormData, setEditFormData] = useState(null); // State to hold data for editing
 
   useEffect(() => {
@@ -17,28 +19,27 @@ const DashboardPage = () => {
   }, []);
 
   const handleEdit = (studentId) => {
+    // setIsEditFormOpen(!isEditFormOpen);
+    debugger
     fetch(`http://localhost:3000/student/${studentId}`)
       .then(response => response.json())
       .then(studentData => {
+        debugger
         setEditFormData(studentData); // Set data for editing
-        setIsFormOpen(true); // Open the edit form
+        setIsEditFormOpen(true); // Open the edit form
       })
       .catch(error => console.error('Error fetching student data:', error));
   };
 
   const handleDelete = (studentId) => {
-    debugger
     // Get the token from localStorage
     const token = localStorage.getItem('token');
-  
     
     if (!token) {
       console.error('No token found. Please log in again.');
-      
       return;
     }
   
-   
     const userRole = localStorage.getItem('userRole');
   
     // Check if the user's role is admin
@@ -57,6 +58,7 @@ const DashboardPage = () => {
     })
     .then(response => {
       if (response.ok) {
+        toast.success("Deleted successfully!");
         console.log(`Student with ID ${studentId} deleted successfully.`);
         // Optionally, you can refresh the student data after deletion
         // For simplicity, we'll just reload the page
@@ -68,9 +70,8 @@ const DashboardPage = () => {
     .catch(error => console.error('Error deleting student:', error));
   };
 
-
   const notify = () => {
-    toast.success("Added successfully!");
+    toast.success("Done Successfully!");
   };
 
   return (
@@ -81,20 +82,23 @@ const DashboardPage = () => {
           {/* Add New User Button */}
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
-            onClick={() => setIsFormOpen(!isFormOpen)}
+            onClick={() => setIsAddFormOpen(!isAddFormOpen)}
           >
-            {isFormOpen ? 'Close Form' : 'Add New User'}
+            {isAddFormOpen ? 'Close Add Form' : 'Add New User'}
           </button>
 
-          {/* Render EditProductForm if isFormOpen is true */}
-          {isFormOpen && (
-            <EditProductForm
-              formData={editFormData} // Pass formData to EditProductForm
-              onClose={() => setIsFormOpen(false)} // Close the form
-              notify={notify} // Pass notify function for toast notifications
-            />
-          )}
+          {/* Render AddUserForm component if isAddFormOpen is true */}
+          {isAddFormOpen && <AddUserForm />}
+        
 
+{/* Render EditProductForm component if isEditFormOpen is true */}
+{isEditFormOpen && (
+  <EditProductForm
+    formData={editFormData} // Pass formData to EditProductForm
+    onClose={() => setIsEditFormOpen(false)} // Close the form
+    notify={notify} // Pass notify function for toast notifications
+  />
+)}
           {/* Dashboard Table */}
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
