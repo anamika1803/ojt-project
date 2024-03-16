@@ -44,6 +44,7 @@ export default function Login() {
     })
       .then(response => response.json())
       .then(data => {
+        debugger
         console.log('API response:', data);
         // Check if the response contains the token and user role
         if (data.token && data.eUser && data.eUser.role) {

@@ -7,6 +7,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState(""); // New state for role
   const [error, setError] = useState("");
 
   function handleRegister(e) {
@@ -41,6 +42,7 @@ export default function Register() {
       setError("Passwords do not match");
       return;
     }
+    debugger
 
     // Clear previous errors
     setError("");
@@ -51,6 +53,7 @@ export default function Register() {
       PhoneNo: phoneno,
       email,
       password,
+      role, // Include role in the body
     };
   
     fetch('http://localhost:3000/register', {
@@ -142,6 +145,19 @@ export default function Register() {
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="role" className="block text-sm font-semibold mb-2">
+              Role
+            </label>
+            <input
+              type="text"
+              id="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               required
             />
