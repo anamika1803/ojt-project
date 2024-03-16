@@ -172,7 +172,7 @@ export default function Register() {
         </form>
         <div className="mt-4 text-center">
           <span>Already have an account? </span>
-          <Link to="/login" className="text-blue-500">
+          <Link to="/" className="text-blue-500">
             Login
           </Link>
         </div>
