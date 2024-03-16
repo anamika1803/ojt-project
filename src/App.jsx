@@ -11,6 +11,8 @@ import Contact from "./Pages/Contact";
 import Courses from "./Pages/Courses";
 import About from "./Pages/About";
 
+import ProfilePage from "./Pages/Profile";
+
 function App() {
   const location = useLocation();
   const [showNavbar, setShowNavbar] = useState(true);
@@ -39,6 +41,7 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/about" element={<About />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
       <Footer />

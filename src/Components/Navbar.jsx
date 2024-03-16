@@ -1,17 +1,18 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FaHome, FaInfoCircle, FaBook, FaPhone, FaChartBar, FaUser } from "react-icons/fa";
 import mindset from "../assets/mindset.jpeg";
 
 function Navbar({ username, userEmail }) {
   const location = useLocation();
   const handleLogout = () => {
-    debugger
     // Remove token from localStorage
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
     // Redirect to the home page
     window.location.href = '/';
   };
+
   return (
     <nav className="bg-white border-[#3D3B3C] dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
@@ -33,7 +34,7 @@ function Navbar({ username, userEmail }) {
                     : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
                 }
               >
-                Home
+                <FaHome className="inline-block mr-1" /> Home
               </Link>
             </li>
             <li>
@@ -45,7 +46,7 @@ function Navbar({ username, userEmail }) {
                     : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
                 }
               >
-                About
+                <FaInfoCircle className="inline-block mr-1" /> About
               </Link>
             </li>
             <li>
@@ -57,7 +58,7 @@ function Navbar({ username, userEmail }) {
                     : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
                 }
               >
-                Courses
+                <FaBook className="inline-block mr-1" /> Courses
               </Link>
             </li>
             <li>
@@ -69,7 +70,7 @@ function Navbar({ username, userEmail }) {
                     : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
                 }
               >
-                Contact
+                <FaPhone className="inline-block mr-1" /> Contact
               </Link>
             </li>
             <li>
@@ -81,7 +82,19 @@ function Navbar({ username, userEmail }) {
                     : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
                 }
               >
-                Dashboard
+                <FaChartBar className="inline-block mr-1" /> Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/profile"
+                className={
+                  location.pathname === "/profile"
+                    ? "block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 font-serif"
+                    : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 font-serif"
+                }
+              >
+                <FaUser className="inline-block mr-1" /> Profile
               </Link>
             </li>
             <li>

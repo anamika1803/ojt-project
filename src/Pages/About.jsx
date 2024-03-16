@@ -1,110 +1,70 @@
-import React from 'react';
-import mind from '../assets/mind.png';
+// About.jsx
 
-const About = () => {
+import React, { useEffect } from 'react';
+import '../Pages/About.css'; // Importing CSS file for styling
+
+import image1 from '../assets/mind.png'; // Importing image files
+import image2 from '../assets/mba.jpg';
+import image3 from '../assets/mbat.jpg';
+
+function About() {
+  useEffect(() => {
+    // Add 'animated' class to paragraphs after component mounts
+    const paragraphs = document.querySelectorAll('.about-page p');
+    paragraphs.forEach((paragraph) => {
+      paragraph.classList.add('animated');
+    });
+  }, []);
+
   return (
-    <div className='container mx-auto px-4 py-8'>
-      <h1 className='text-4xl font-bold italic mb-8'>About Us</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-        <div>
-          <img
-            src={mind}
-            alt='About Us'
-            className='w-full rounded-lg shadow-lg'
-          />
+    <div className="about-page">
+      <div className="top-image">
+        <img src={image1} alt="Top Image" />
+      </div>
+      <div className="split-content">
+        <div className="left-content">
+          <img src={image2} alt="Second Image" />
         </div>
-        <div>
-          <p className='mb-8'>
-            Leverage successful mindset practices in everyday life so you can
-            achieve, do, and become even more. Just like personal care and
-            health, taking charge of your mindset requires regular and
-            consistent effort, and Mindset Academy is designed to support you on
-            your journey to success. Here, you’ll get the knowledge of the core
-            principles with strategic application and integration, so mindset
-            mastery will become a part of your everyday life.
+        <div className="right-content">
+          <h2>About Us</h2>
+          <p>
+          Those who venture here—to learn, research, teach, work, 
+          and grow—join nearly four centuries of students and scholars in the pursuit of truth, knowledge, and a better world.
+          we are dedicated to providing exceptional educational opportunities for learners of all ages and backgrounds. With a
+           rich history of academic excellence and a forward-thinking approach to teaching and learning, we strive to inspire and
+            empower individuals to reach their highest potential. Our diverse faculty brings a wealth of expertise and passion to the classroom, 
+            fostering an environment where creativity, critical thinking, and collaboration thrive. Whether you're seeking to advance your career,
+             pursue a personal passion, or simply expand your horizons, [Academy Name] offers a wide range of courses and programs tailored to meet
+              your needs. At the heart of everything we do is a commitment to excellence, integrity, and inclusivity, ensuring that every student 
+              receives the support and resources they need to succeed. Join us as we embark on a journey of discovery, 
+          innovation, and lifelong learning together
           </p>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-            <div className='bg-white p-6 rounded-lg shadow'>
-              <h5 className='mb-2 text-xl font-bold text-gray-900'>
-                Spotting Exaggerated Claims for AI Superiority Over Experts
-              </h5>
-              <p className='text-gray-700'>
-                Many artificial intelligence developers are prone to dismiss
-                human expertise or misunderstand it.
-              </p>
-            </div>
-            {/* Add similar divs for other articles */}
-          </div>
-          <p className='mt-8 mb-8'>
-            A mindset is a belief that orients the way we handle situations—the
-            way we sort out what is going on and what we should do. Our mindsets
-            help us spot opportunities, but they can also trap us in
-            self-defeating cycles. This essay isn’t about all the beliefs we
-            might hold. It is about the beliefs that make a difference in our
-            lives—the beliefs that distinguish people who are successful at what
-            they do versus those who continually struggle.
-          </p>
-          <div className='bg-white p-8 rounded-lg shadow mb-8'>
-            <h5 className='mb-2 text-xl font-bold text-gray-900'>
-              Learn More about us
-            </h5>
-            <p className='mb-5 text-gray-500'>
-              Stay up to date and move work with Mindset on iOS & Android.
-              Download the app today.
-            </p>
-            <div className='flex flex-col md:flex-row md:justify-between'>
-              <a
-                href='#'
-                className='w-full md:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 mb-3 md:mb-0'
-              >
-                <svg
-                  className='w-7 h-7 mr-3'
-                  aria-hidden='true'
-                  focusable='false'
-                  data-prefix='fab'
-                  data-icon='apple'
-                  role='img'
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 384 512'
-                >
-                  <path
-                    fill='currentColor'
-                    d='M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z'
-                  ></path>
-                </svg>
-                <span>Download on the Mac App Store</span>
-              </a>
-              <a
-                href='#'
-                className='w-full md:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5'
-              >
-                <svg
-                  className='w-7 h-7 mr-3'
-                  aria-hidden='true'
-                  focusable='false'
-                  data-prefix='fab'
-                  data-icon='google-play'
-                  role='img'
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 512 512'
-                >
-                  <path
-                    fill='currentColor'
-                    d='M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z'
-                  ></path>
-                </svg>
-                <span>Get in on Google Play</span>
-              </a>
-            </div>
-          </div>
+          {/* Add more content here */}
         </div>
       </div>
-      <footer className="bg-gray-200 dark:bg-gray-900 py-4 text-center mt-8">
+      <div className="split-content">
+        <div className="left-content">
+          <h2>About Our Mission</h2>
+          <p>
+          our mission is to provide exceptional education that empowers individuals to realize their 
+          full potential and make meaningful contributions to society. Rooted in a commitment to excellence, 
+          integrity, and inclusivity, we offer a diverse range of courses and programs designed to meet the needs 
+          of learners from all backgrounds. Through innovative teaching methods, personalized support, and a vibrant learning community, 
+          we strive to inspire curiosity, foster critical thinking, and instill a lifelong love of learning. We are dedicated to continuous improvement, embracing emerging technologies and pedagogical approaches to ensure that our educational offerings remain relevant and impactful. By nurturing a culture of collaboration, creativity, and global citizenship, we aim to equip our students with the knowledge, skills, and mindset needed to thrive in an ever-changing world. Join us on a journey of discovery, growth, 
+          and transformation as we work together to shape a brighter future for individuals and communities worldwide.
+          </p>
+          {/* Add more content here */}
+        </div>
+        <div className="right-content">
+          <img src={image3} alt="Third Image" />
+        </div>
+      </div>
+      <footer className="mt-auto bg-gray-000 dark:bg-gray-900 py-4 text-center">
         {/* Footer content */}
         © 2024 Your Company. All rights reserved.
       </footer>
     </div>
   );
-};
+}
 
 export default About;

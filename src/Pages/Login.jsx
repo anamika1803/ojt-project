@@ -51,6 +51,7 @@ export default function Login() {
           // Store the token and user role in localStorage
           localStorage.setItem('token', data.token);
           localStorage.setItem('userRole', data.eUser.role);
+          localStorage.setItem('id', data.eUser._id);
           navigation('/dashboard'); // Redirect to the dashboard after successful login
         } else {
           console.error('Invalid response from login API');

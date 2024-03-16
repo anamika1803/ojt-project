@@ -166,13 +166,7 @@ const AddUserPage = () => {
             >
               Add User
             </button>
-            <button
-              type="button"
-              onClick={handleCancel}
-              className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
-            >
-              Cancel
-            </button>
+          
           </div>
         </form>
       </div>
