@@ -34,7 +34,7 @@ function About() {
            rich history of academic excellence and a forward-thinking approach to teaching and learning, we strive to inspire and
             empower individuals to reach their highest potential. Our diverse faculty brings a wealth of expertise and passion to the classroom, 
             fostering an environment where creativity, critical thinking, and collaboration thrive. Whether you're seeking to advance your career,
-             pursue a personal passion, or simply expand your horizons, [Academy Name] offers a wide range of courses and programs tailored to meet
+             pursue a personal passion, or simply expand your horizons, MindSet offers a wide range of courses and programs tailored to meet
               your needs. At the heart of everything we do is a commitment to excellence, integrity, and inclusivity, ensuring that every student 
               receives the support and resources they need to succeed. Join us as we embark on a journey of discovery, 
           innovation, and lifelong learning together
