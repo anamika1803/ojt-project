@@ -20,7 +20,7 @@ const BoxWithImageAndText = () => {
             on demand-training
           </p>
           <div className="ml-2">
-            <Link to="/" className="relative px-2 py-2 font-sm text-white group ml-[10vh] mt-2 text-lg">
+            <Link to="/About" className="relative px-2 py-2 font-sm text-white group ml-[10vh] mt-2 text-lg">
               <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-purple-500 group-hover:bg-purple-800 group-hover:skew-x-12 "></span>
               <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-purple-700 group-hover:bg-purple-500 group-hover:-skew-x-12"></span>
               <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 bg-purple-800 -rotate-12"></span>
@@ -39,9 +39,10 @@ const BoxWithImageAndText = () => {
           </a>
           <div className="p-5">
             <a href="#">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Bachelor of Computer Application</h5>
             </a>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+BCA typically stands for "Bachelor of Computer Applications." It is an undergraduate degree course in the field of computer applications. </p>
             <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               Read more
               <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -57,9 +58,10 @@ const BoxWithImageAndText = () => {
           </a>
           <div className="p-5">
             <a href="#">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Bachelor of Mass Communication</h5>
             </a>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+A Bachelor of Mass Communication (BMC) is an undergraduate degree program that focuses on the study of mass media, communication.</p>
             <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               Read more
               <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -75,9 +77,9 @@ const BoxWithImageAndText = () => {
           </a>
           <div className="p-5">
             <a href="#">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Civil Engineering</h5>
             </a>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Civil engineering is a branch of engineering that deals with the design, construction, and maintenance of infrastructure projects & systems.</p>
             <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               Read more
               <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -87,11 +89,6 @@ const BoxWithImageAndText = () => {
           </div>
         </div>
       </div>
-      <div></div>
-      <footer className="mt-auto bg-gray-200 dark:bg-gray-900 py-4 text-center">
-        {/* Footer content */}
-        © 2024 Your Company. All rights reserved.
-      </footer>
     </div>
   );
 };

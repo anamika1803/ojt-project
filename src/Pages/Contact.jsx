@@ -12,10 +12,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_pmxisk1",
-        "template_iaeoeka",
+        "service_9nxpjrs",
+        "template_031auzj",
         form.current,
-        "Jf7IR0yDL7wAz9VXt"
+        "qg4h34_-k2jgT9MF2"
       )
       .then(
         (result) => {
@@ -47,7 +47,7 @@ const Contact = () => {
                 <h2 className="text-3xl font-bold mb-4">Let's Talk with Us</h2>
                 <p className="text-lg">
                   We are here to answer any questions you may have about our services.
-                  Reach out to us and we'll respond as soon as we can.
+                  Reach out to us and We'll respond as soon as we can.
                 </p>
               </div>
             </div>

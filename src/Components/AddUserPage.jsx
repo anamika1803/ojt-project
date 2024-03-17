@@ -92,7 +92,7 @@ const AddUserPage = () => {
             role: '',
             password: ''
           });
-          window.location.reload();
+          window.location.reload();//refresh the page automatically
         } else {
           console.error('Failed to add user.');
         }
