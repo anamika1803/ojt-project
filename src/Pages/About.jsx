@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import '../Pages/About.css'; // Importing CSS file for styling
 
 import image1 from '../assets/mind.png'; // Importing image files
-import image2 from '../assets/mba.jpg';
+import image2 from '../assets/lib.jpg';
 import image3 from '../assets/mbat.jpg';
 
 function About() {

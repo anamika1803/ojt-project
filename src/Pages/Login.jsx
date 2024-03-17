@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // Import your image
 import loginImage from '../assets/login.jpg';
 
@@ -52,13 +53,17 @@ export default function Login() {
           localStorage.setItem('token', data.token);
           localStorage.setItem('userRole', data.eUser.role);
           localStorage.setItem('id', data.eUser._id);
+          toast.success("Login successfully!");
           navigation('/dashboard'); // Redirect to the dashboard after successful login
         } else {
           console.error('Invalid response from login API');
+          toast.warn("Invalid Credential");
+          
         }
       })
       .catch(error => {
         console.error('Error:', error);
+        toast.warn("Lofin Failed");
       });
   }
 
@@ -115,7 +120,7 @@ export default function Login() {
           </Link>
         </div>
       </div>
-     <div></div>
+     <div><ToastContainer /></div>
     </div>
   );
   
