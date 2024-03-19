@@ -8,29 +8,55 @@ const EditUserForm = ({ formData, onClose, notify }) => {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    debugger
     // Convert phoneNumber to string
     const updatedPhoneNumber = String(updatedFormData.PhoneNo);
     // Create a copy of updatedFormData without the id and password fields
     const { _id, password,__v, ...formDataWithoutIdAndPassword } = updatedFormData;
     // Create updatedFormDataCopy with updated phoneNumber
     const updatedFormDataCopy = { ...formDataWithoutIdAndPassword, PhoneNo: updatedPhoneNumber };
+    const id = localStorage.getItem('id');
+    const userRole = localStorage.getItem('userRole');
+    debugger
+    if(updatedFormData._id == id || userRole == 'admin'){
+      fetch(`http://localhost:3000/updateStudent/${_id}`, {
+        method: 'Put',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormDataCopy),
+      })
+      .then(response => response.json())
+      .then(data => {
+        debugger
+        console.log('Student updated successfully:', data);
+        notify();
+        // Close the form
+        onClose();
+      })
+      .catch(error => console.error('Error updating student:', error));
+    }
+    else{
+      toast.error("You can not change other user credential!!!!!");
+    }
+    }
     // Code to submit form data to API for update (PATCH request)
-    fetch(`http://localhost:3000/updateStudent/${_id}`, {
-      method: 'Put',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedFormDataCopy),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Student updated successfully:', data);
-      notify();
-      // Close the form
-      onClose();
-    })
-    .catch(error => console.error('Error updating student:', error));
-  };
+  //   fetch(`http://localhost:3000/updateStudent/${_id}`, {
+  //     method: 'Put',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(updatedFormDataCopy),
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log('Student updated successfully:', data);
+  //     notify();
+  //     // Close the form
+  //     onClose();
+  //   })
+  //   .catch(error => console.error('Error updating student:', error));
+  // };
   
   // Function to handle input changes in the form
   const handleInputChange = (e) => {
@@ -59,7 +85,7 @@ const EditUserForm = ({ formData, onClose, notify }) => {
           />
           <input
             type="text"
-            name="phoneNumber"
+            name="PhoneNo"
             placeholder="Phone Number"
             value={updatedFormData.PhoneNo}
             onChange={handleInputChange}
@@ -70,6 +96,14 @@ const EditUserForm = ({ formData, onClose, notify }) => {
             name="email"
             placeholder="Email"
             value={updatedFormData.email}
+            onChange={handleInputChange}
+            className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 block w-full"
+          />
+           <input
+            type="text"
+            name="course"
+            placeholder="Course"
+            value={updatedFormData.course}
             onChange={handleInputChange}
             className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 block w-full"
           />

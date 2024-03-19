@@ -46,7 +46,7 @@ export default function Register() {
 
     // Clear previous errors
     setError("");
-
+    debugger
     // Continue with registration logic
     const body = {
       name,

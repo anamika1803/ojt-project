@@ -113,6 +113,9 @@ const DashboardPage = () => {
                   Email
                 </th>
                 <th scope="col" className="px-6 py-3">
+                  Course
+                </th>
+                <th scope="col" className="px-6 py-3">
                   Role
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -131,6 +134,9 @@ const DashboardPage = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {student.email}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {student.course}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {student.role}

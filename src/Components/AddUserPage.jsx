@@ -8,7 +8,8 @@ const AddUserPage = () => {
     phoneNumber: '',
     email: '',
     role: '',
-    password: ''
+    password: '',
+    course: ''
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -16,7 +17,8 @@ const AddUserPage = () => {
     phoneNumber: '',
     email: '',
     role: '',
-    password: ''
+    password: '',
+    course: ''
   });
 
   const handleInputChange = (e) => {
@@ -64,9 +66,8 @@ const AddUserPage = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      const { name, phoneNumber, email, password, role } = formData;
+      const { name, phoneNumber, email, password, role, course } = formData;
 
-      // Make API call to add student
       fetch('http://localhost:3000/addStudent', {
         method: 'POST',
         headers: {
@@ -77,32 +78,28 @@ const AddUserPage = () => {
           PhoneNo: phoneNumber,
           email,
           password,
-          role
+          role,
+          course
         })
       })
       .then(response => {
         if (response.ok) {
           toast.success("User inserted successfully!");
-          // Optionally, you can redirect to another page or update the UI
-          // For now, just reset the form
           setFormData({
             name: '',
             phoneNumber: '',
             email: '',
             role: '',
-            password: ''
+            password: '',
+            course: ''
           });
-          window.location.reload();//refresh the page automatically
+          window.location.reload();
         } else {
           console.error('Failed to add user.');
         }
       })
       .catch(error => console.error('Error adding user:', error));
     }
-  };
-
-  const handleCancel = () => {
-    // Optionally handle cancel action here
   };
 
   return (
@@ -159,6 +156,15 @@ const AddUserPage = () => {
             className={`border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 w-full ${formErrors.password && 'border-red-500'}`}
           />
           {formErrors.password && <p className="text-red-500">{formErrors.password}</p>}
+          <input
+            type="text"
+            name="course"
+            placeholder="Course"
+            value={formData.course}
+            onChange={handleInputChange}
+            className={`border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 w-full ${formErrors.course && 'border-red-500'}`}
+          />
+          {formErrors.course && <p className="text-red-500">{formErrors.course}</p>}
           <div className="flex justify-center mt-4">
             <button
               type="submit"
@@ -166,7 +172,7 @@ const AddUserPage = () => {
             >
               Add User
             </button>
-          
+            {/* Add Cancel button if needed */}
           </div>
         </form>
       </div>
