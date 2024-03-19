@@ -67,8 +67,9 @@ const AddUserPage = () => {
 
     if (validateForm()) {
       const { name, phoneNumber, email, password, role, course } = formData;
-
-      fetch('http://localhost:3000/addStudent', {
+      const userRole = localStorage.getItem('userRole');
+      if(userRole == 'admin'){
+        fetch('http://localhost:3000/addStudent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -84,6 +85,7 @@ const AddUserPage = () => {
       })
       .then(response => {
         if (response.ok) {
+          debugger
           toast.success("User inserted successfully!");
           setFormData({
             name: '',
@@ -100,6 +102,42 @@ const AddUserPage = () => {
       })
       .catch(error => console.error('Error adding user:', error));
     }
+    else{
+      toast.error("User are not authorize to add another user!!!");
+    }
+      }
+    //   fetch('http://localhost:3000/addStudent', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       name,
+    //       PhoneNo: phoneNumber,
+    //       email,
+    //       password,
+    //       role,
+    //       course
+    //     })
+    //   })
+    //   .then(response => {
+    //     if (response.ok) {
+    //       toast.success("User inserted successfully!");
+    //       setFormData({
+    //         name: '',
+    //         phoneNumber: '',
+    //         email: '',
+    //         role: '',
+    //         password: '',
+    //         course: ''
+    //       });
+    //       window.location.reload();
+    //     } else {
+    //       console.error('Failed to add user.');
+    //     }
+    //   })
+    //   .catch(error => console.error('Error adding user:', error));
+    // }
   };
 
   return (

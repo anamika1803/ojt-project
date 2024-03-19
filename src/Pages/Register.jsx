@@ -64,6 +64,7 @@ export default function Register() {
       body: JSON.stringify(body),
     })
       .then(response => {
+        debugger
         if (response.ok) {
           return response.json();
         } else {

@@ -10,21 +10,23 @@ const DashboardPage = () => {
   const [isAddFormOpen, setIsAddFormOpen] = useState(false); // State for Add User form
   const [isEditFormOpen, setIsEditFormOpen] = useState(false); // State for Edit form
   const [editFormData, setEditFormData] = useState(null); // State to hold data for editing
+  const [selectedRole, setSelectedRole] = useState('user'); // State for selected role
 
   useEffect(() => {
-    fetch('http://localhost:3000/student')
+    fetchStudentData(selectedRole);
+  }, [selectedRole]);
+
+  const fetchStudentData = (role) => {
+    fetch(`http://localhost:3000/student?role=${role}`)
       .then(response => response.json())
       .then(data => setStudentData(data.student))
       .catch(error => console.error('Error fetching student data:', error));
-  }, []);
+  };
 
   const handleEdit = (studentId) => {
-    // setIsEditFormOpen(!isEditFormOpen);
-    debugger
     fetch(`http://localhost:3000/student/${studentId}`)
       .then(response => response.json())
       .then(studentData => {
-        debugger
         setEditFormData(studentData); // Set data for editing
         setIsEditFormOpen(true); // Open the edit form
       })
@@ -32,23 +34,20 @@ const DashboardPage = () => {
   };
 
   const handleDelete = (studentId) => {
-    // Get the token from localStorage
     const token = localStorage.getItem('token');
-    
+
     if (!token) {
       console.error('No token found. Please log in again.');
       return;
     }
-  
+
     const userRole = localStorage.getItem('userRole');
-  
-    // Check if the user's role is admin
+
     if (userRole !== 'admin') {
       console.log('Only admin users can delete students.');
       return;
     }
-  
-    // Send the token in the Authorization header
+
     fetch(`http://localhost:3000/deleteStudent/${studentId}`, {
       method: 'DELETE',
       headers: {
@@ -60,9 +59,6 @@ const DashboardPage = () => {
       if (response.ok) {
         toast.success("Deleted successfully!");
         console.log(`Student with ID ${studentId} deleted successfully.`);
-        // Optionally, you can refresh the student data after deletion
-        // For simplicity, we'll just reload the page
-        // window.location.reload();
       } else {
         console.error(`Failed to delete student with ID ${studentId}.`);
       }
@@ -76,7 +72,6 @@ const DashboardPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* <Navbar /> */}
       <div className="mt-8 px-4 flex-grow">
         <div className="relative overflow-x-auto">
           {/* Add New User Button */}
@@ -90,17 +85,32 @@ const DashboardPage = () => {
           {/* Render AddUserForm component if isAddFormOpen is true */}
           {isAddFormOpen && <AddUserForm />}
         
+          {/* Render EditProductForm component if isEditFormOpen is true */}
+          {isEditFormOpen && (
+            <EditProductForm
+              formData={editFormData} // Pass formData to EditProductForm
+              onClose={() => setIsEditFormOpen(false)} // Close the form
+              notify={notify} // Pass notify function for toast notifications
+            />
+          )}
 
-{/* Render EditProductForm component if isEditFormOpen is true */}
-{isEditFormOpen && (
-  <EditProductForm
-    formData={editFormData} // Pass formData to EditProductForm
-    onClose={() => setIsEditFormOpen(false)} // Close the form
-    notify={notify} // Pass notify function for toast notifications
-  />
-)}
+          {/* Role Dropdown */}
+          <div className="mb-4">
+            <label htmlFor="role">Select Role:</label>
+            <select
+              id="role"
+              value={selectedRole}
+              onChange={(e) => setSelectedRole(e.target.value)}
+              className="ml-2 border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2"
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
           {/* Dashboard Table */}
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            {/* Table Headers */}
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="px-6 py-3">
@@ -112,9 +122,11 @@ const DashboardPage = () => {
                 <th scope="col" className="px-6 py-3">
                   Email
                 </th>
-                <th scope="col" className="px-6 py-3">
-                  Course
-                </th>
+                {selectedRole === 'user' && (
+                  <th scope="col" className="px-6 py-3">
+                    Course
+                  </th>
+                )}
                 <th scope="col" className="px-6 py-3">
                   Role
                 </th>
@@ -123,6 +135,7 @@ const DashboardPage = () => {
                 </th>
               </tr>
             </thead>
+            {/* Table Body */}
             <tbody>
               {studentData.map(student => (
                 <tr key={student._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -135,9 +148,11 @@ const DashboardPage = () => {
                   <td className="px-6 py-4 whitespace-nowrap">
                     {student.email}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {student.course}
-                  </td>
+                  {selectedRole === 'user' && (
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {student.course}
+                    </td>
+                  )}
                   <td className="px-6 py-4 whitespace-nowrap">
                     {student.role}
                   </td>
