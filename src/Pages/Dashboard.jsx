@@ -45,6 +45,7 @@ const DashboardPage = () => {
 
     if (userRole !== 'admin') {
       console.log('Only admin users can delete students.');
+      toast.error('Only admin users can delete students.')
       return;
     }
 
