@@ -180,7 +180,7 @@ const AddUserPage = () => {
               className={`border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 w-full ${formErrors.role && 'border-red-500'}`}
             >
               <option value="">Select Role</option>
-              <option value="admin">Admin</option>
+              {/* <option value="admin">Admin</option> */}
               <option value="user">User</option>
             </select>
             {formErrors.role && <p className="text-red-500 absolute bottom-0 left-0">{formErrors.role}</p>}

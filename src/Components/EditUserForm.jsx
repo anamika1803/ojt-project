@@ -9,6 +9,12 @@ const EditUserForm = ({ formData, onClose, notify }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     debugger
+    const token = localStorage.getItem('token');
+
+  if (!token) {
+    toast.error("First Login to edit");
+    return;
+  }
     // Convert phoneNumber to string
     const updatedPhoneNumber = String(updatedFormData.PhoneNo);
     // Create a copy of updatedFormData without the id and password fields

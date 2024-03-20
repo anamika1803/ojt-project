@@ -69,21 +69,25 @@ const DashboardPage = () => {
   const notify = () => {
     toast.success("Done Successfully!");
   };
-
+  const isLoggedIn = localStorage.getItem('token');
+  const userRole = localStorage.getItem('userRole');
+  const isAdmin = userRole === 'admin';
   return (
     <div className="flex flex-col min-h-screen">
       <div className="mt-8 px-4 flex-grow">
-        <div className="relative overflow-x-auto">
-          {/* Add New User Button */}
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
-            onClick={() => setIsAddFormOpen(!isAddFormOpen)}
-          >
-            {isAddFormOpen ? 'Close Add Form' : 'Add New User'}
-          </button>
+      <div className="relative overflow-x-auto">
+          {/* Add New User Button (conditionally rendered) */}
+          {isLoggedIn && isAdmin  && (
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
+              onClick={() => setIsAddFormOpen(true)}
+            >
+              Add New User
+            </button>
+          )}
 
           {/* Render AddUserForm component if isAddFormOpen is true */}
-          {isAddFormOpen && <AddUserForm />}
+          {isAddFormOpen && <AddUserForm onClose={() => setIsAddFormOpen(false)} />}
         
           {/* Render EditProductForm component if isEditFormOpen is true */}
           {isEditFormOpen && (

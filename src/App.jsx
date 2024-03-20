@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     // Check if the current route is either /login or /register
-    if (location.pathname === "/" || location.pathname === "/register") {
+    if (location.pathname === "/login" || location.pathname === "/register") {
       // Hide the Navbar if on the Login or Register routes
       setShowNavbar(false);
     } else {
@@ -34,8 +34,8 @@ function App() {
         {showNavbar && <Navbar />}
        
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
           <Route path="/courses" element={<Courses />} />

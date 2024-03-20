@@ -8,7 +8,8 @@ function ProfilePage() {
   useEffect(() => {
     // Retrieve user ID from localStorage
     const userId = localStorage.getItem("id");
-    if (userId) {
+    const userToken = localStorage.getItem("token");
+    if (userToken) {
       // Fetch user data using the user ID
       fetchUserData(userId);
     }
