@@ -38,6 +38,7 @@ const DashboardPage = () => {
 
     if (!token) {
       console.error('No token found. Please log in again.');
+      toast.error('Please first Login!!!');
       return;
     }
 

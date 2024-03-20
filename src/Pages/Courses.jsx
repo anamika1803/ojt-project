@@ -89,6 +89,10 @@ A Bachelor of Mass Communication (BMC) is an undergraduate degree program that f
           </div>
         </div>
       </div>
+      <footer className="bg-gray-200 dark:bg-gray-900 py-4 text-center mt-8"> {/* Added margin top */}
+        {/* Footer content */}
+        © 2024 Your Company. All rights reserved.
+      </footer>
     </div>
   );
 };
