@@ -2,29 +2,30 @@ import React, { useState } from 'react';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const EditUserForm = ({ formData, onClose, notify }) => {
+const EditUserForm = ({ formData, onClose, notify, userRole }) => {
   const [updatedFormData, setUpdatedFormData] = useState({ ...formData });
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger
     const token = localStorage.getItem('token');
 
-  if (!token) {
-    toast.error("First Login to edit");
-    return;
-  }
+    if (!token) {
+      toast.error("First Login to edit");
+      return;
+    }
+
     // Convert phoneNumber to string
     const updatedPhoneNumber = String(updatedFormData.PhoneNo);
     // Create a copy of updatedFormData without the id and password fields
-    const { _id, password,__v, ...formDataWithoutIdAndPassword } = updatedFormData;
+    const { _id, password, __v, ...formDataWithoutIdAndPassword } = updatedFormData;
     // Create updatedFormDataCopy with updated phoneNumber
     const updatedFormDataCopy = { ...formDataWithoutIdAndPassword, PhoneNo: updatedPhoneNumber };
     const id = localStorage.getItem('id');
     const userRole = localStorage.getItem('userRole');
-    debugger
-    if(updatedFormData._id == id || userRole == 'admin'){
+    
+
+    if (updatedFormData._id === id || userRole === 'admin') {
       fetch(`http://localhost:3000/updateStudent/${_id}`, {
         method: 'Put',
         headers: {
@@ -32,38 +33,19 @@ const EditUserForm = ({ formData, onClose, notify }) => {
         },
         body: JSON.stringify(updatedFormDataCopy),
       })
-      .then(response => response.json())
-      .then(data => {
-        debugger
-        console.log('Student updated successfully:', data);
-        notify();
-        // Close the form
-        onClose();
-      })
-      .catch(error => console.error('Error updating student:', error));
-    }
-    else{
+        .then(response => response.json())
+        .then(data => {
+          console.log('Student updated successfully:', data);
+          notify();
+          // Close the form
+          onClose();
+        })
+        .catch(error => console.error('Error updating student:', error));
+    } else {
       toast.error("You can not change other user credential!!!!!");
     }
-    }
-    // Code to submit form data to API for update (PATCH request)
-  //   fetch(`http://localhost:3000/updateStudent/${_id}`, {
-  //     method: 'Put',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(updatedFormDataCopy),
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log('Student updated successfully:', data);
-  //     notify();
-  //     // Close the form
-  //     onClose();
-  //   })
-  //   .catch(error => console.error('Error updating student:', error));
-  // };
-  
+  };
+
   // Function to handle input changes in the form
   const handleInputChange = (e) => {
     setUpdatedFormData({
@@ -105,14 +87,17 @@ const EditUserForm = ({ formData, onClose, notify }) => {
             onChange={handleInputChange}
             className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 block w-full"
           />
-           <input
-            type="text"
-            name="course"
-            placeholder="Course"
-            value={updatedFormData.course}
-            onChange={handleInputChange}
-            className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 block w-full"
-          />
+          {/* Conditionally render course input based on userRole */}
+          {updatedFormData.role === 'user' && (
+            <input
+              type="text"
+              name="course"
+              placeholder="Course"
+              value={updatedFormData.course}
+              onChange={handleInputChange}
+              className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 block w-full"
+            />
+          )}
           <input
             type="text"
             name="role"
@@ -122,7 +107,6 @@ const EditUserForm = ({ formData, onClose, notify }) => {
             className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 block w-full"
           />
           <div className="flex justify-end">
-            
             <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">
               Update Student
             </button>
