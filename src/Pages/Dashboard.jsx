@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from '../Components/Navbar';
 import EditProductForm from '../Components/EditUserForm'; // Import the EditProductForm component
 import AddUserForm from '../Components/AddUserPage'; // Import the AddUserForm component
+import EnrollmentGraph from './EnrollmentGraph';
+import UserCountGraph from './UserCountGraph';
 
 const DashboardPage = () => {
   const [studentData, setStudentData] = useState([]);
@@ -77,6 +79,17 @@ const DashboardPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="mt-8 px-4 flex-grow">
+      <div className="flex">
+  <div className="w-1/2 pr-2">
+    <h3 className="mb-4 font-bold bg-gray-200 rounded-md p-2">Enrolled Courses Graph</h3>
+    <EnrollmentGraph studentData={studentData} />
+  </div>
+  <div className="w-1/2 pl-2">
+    <h3 className="mb-4 font-bold bg-gray-200 rounded-md p-2">User Graph</h3>
+    <UserCountGraph studentData={studentData} />
+  </div>
+</div>
+<div><br></br></div>
       <div className="relative overflow-x-auto">
           {/* Add New User Button (conditionally rendered) */}
           {isLoggedIn && isAdmin  && (
@@ -171,6 +184,8 @@ const DashboardPage = () => {
             </tbody>
           </table>
         </div>
+       
+       
       </div>
       <footer className="mt-auto bg-gray-200 dark:bg-gray-900 py-4 text-center">
         © 2024 Your Company. All rights reserved.
