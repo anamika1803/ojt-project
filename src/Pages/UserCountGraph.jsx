@@ -7,7 +7,7 @@ const ApexChart = () => {
     options: {
       chart: {
         type: 'bar',
-        height: 350,
+        height: 250,
         width: '70%' // Set width to 50%
       },
       plotOptions: {
@@ -54,7 +54,7 @@ const ApexChart = () => {
           yaxis: {
             ...chartData.options.yaxis,
             title: {
-              text: 'Number of Students'
+              text: 'Number of User'
             }
           }
         }
