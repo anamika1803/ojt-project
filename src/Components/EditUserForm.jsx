@@ -23,27 +23,37 @@ const EditUserForm = ({ formData, onClose, notify, userRole }) => {
     const updatedFormDataCopy = { ...formDataWithoutIdAndPassword, PhoneNo: updatedPhoneNumber };
     const id = localStorage.getItem('id');
     const userRole = localStorage.getItem('userRole');
-    
+  
 
     if (updatedFormData._id === id || userRole === 'admin') {
-      fetch(`http://localhost:3000/updateStudent/${_id}`, {
-        method: 'Put',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedFormDataCopy),
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Student updated successfully:', data);
-          notify();
-          // Close the form
-          onClose();
+      debugger
+      if (updatedFormData.role === 'admin' && userRole === 'user') {
+        toast.error("Not Authorized");
+      } else {
+        fetch(`http://localhost:3000/updateStudent/${_id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedFormDataCopy),
         })
-        .catch(error => console.error('Error updating student:', error));
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log('Student updated successfully:', data);
+            notify();
+            onClose();
+          })
+          .catch(error => console.error('Error updating student:', error));
+      }
     } else {
-      toast.error("You can not change other user credential!!!!!");
+      toast.error("You are not authorized to change other user credentials!");
     }
+    
   };
 
   // Function to handle input changes in the form
