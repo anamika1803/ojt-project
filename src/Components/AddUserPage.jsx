@@ -143,7 +143,7 @@ const AddUserPage = () => {
   return (
     <div className="flex flex-col min-h-screen items-center justify-start bg-gray-100">
       <div className="max-w-md w-full bg-white shadow-md rounded-md p-6 mt-8">
-        <h1 className="text-3xl font-bold mb-8 text-center">Add New User</h1>
+        <h1 className="text-3xl font-bold mb-8 text-center">Add New Student</h1>
         <form onSubmit={handleSave} className="mb-4">
           <input
             type="text"

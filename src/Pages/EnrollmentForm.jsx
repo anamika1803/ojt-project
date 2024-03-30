@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const EnrollmentForm = () => {
+const EnrollmentForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -42,6 +42,12 @@ const EnrollmentForm = () => {
       return;
     }
 
+    // Validate password length
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return;
+    }
+
     // All validations passed, submit the form
     fetch('http://localhost:3000/addStudent', {
       method: 'POST',
@@ -63,15 +69,12 @@ const EnrollmentForm = () => {
         password: '',
         PhoneNo: ''
       });
+      onClose(); // Close the form
     })
     .catch(error => {
       console.error('Error enrolling student:', error);
       toast.error("Error enrolling student. Please try again later.");
     });
-  };
-
-  const handleClose = () => {
-    document.getElementById("enrollment-form").classList.add("hidden");
   };
 
   return (
@@ -113,6 +116,7 @@ const EnrollmentForm = () => {
             value={formData.password}
             onChange={handleInputChange}
             className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 rounded-md px-4 py-2 mb-2 block w-full"
+            minLength="6"
             required
           />
           <input
@@ -125,7 +129,7 @@ const EnrollmentForm = () => {
             required
           />
           <div className="flex justify-end">
-            <button type="button" onClick={handleClose} className="mr-2 bg-gray-500 text-white px-4 py-2 rounded-md">
+            <button type="button" onClick={onClose} className="mr-2 bg-gray-500 text-white px-4 py-2 rounded-md">
               Close
             </button>
             <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">

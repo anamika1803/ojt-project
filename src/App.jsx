@@ -10,7 +10,7 @@ import Register from "./Pages/Register";
 import Contact from "./Pages/Contact";
 import Courses from "./Pages/Courses";
 import About from "./Pages/About";
-import UserCountGraph from "./Pages/UserCountGraph";
+import Enroll from "./Pages/EnrollmentForm";
 
 import ProfilePage from "./Pages/Profile";
 
@@ -43,7 +43,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/graph" element={<UserCountGraph />} />
+          <Route path="/enroll" element={<Enroll />} />
         </Routes>
       </div>
       <Footer />
